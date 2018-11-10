@@ -1,0 +1,7 @@
+<launch>
+	<rosparam file="$(find thedush_arm_full_robot)/config/trajectory_control.yaml" command="load"/>
+
+  <node name="thedush_arm_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/thedush_arm_full_robot" args="thedush_arm_joint_controller"/>
+
+</launch>

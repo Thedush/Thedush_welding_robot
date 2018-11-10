@@ -1,0 +1,23 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"arm_link" [label="arm_link"];
+"shoulder_link" [label="shoulder_link"];
+"wrist_link" [label="wrist_link"];
+"wrotate_link" [label="wrotate_link"];
+"tool_link" [label="tool_link"];
+"bottom_link" [label="bottom_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "arm_joint" [label="xyz: 0.0930627 -0.005 -0.00907338 \nrpy: 1.5708 -0 -0.00097724"]
+"arm_joint" -> "arm_link"
+"arm_link" -> "shoulder_joint" [label="xyz: 0.0640386 0.164269 -0.022444 \nrpy: 0 -0 0"]
+"shoulder_joint" -> "shoulder_link"
+"shoulder_link" -> "wrist_joint" [label="xyz: -0.354006 0.280243 -0.0200289 \nrpy: 4.1874e-06 3.5863e-15 -0.00411"]
+"wrist_joint" -> "wrist_link"
+"wrist_link" -> "wrotate_joint" [label="xyz: -0.00185671 0.00107653 0.0520617 \nrpy: 0 0.01 0"]
+"wrotate_joint" -> "wrotate_link"
+"wrotate_link" -> "tool_joint" [label="xyz: 0.482182 0.0480664 0.053522 \nrpy: -2.9271 -0.26532 1.4974"]
+"tool_joint" -> "tool_link"
+"base_link" -> "bottom_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"bottom_joint" -> "bottom_link"
+}

@@ -1,0 +1,13 @@
+controller_manager_ns: controller_manager
+controller_list:
+  - name: thedush_arm_full_robot/thedush_arm_joint_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - arm_joint
+      - shoulder_joint
+      - wrist_joint
+      - wrotate_joint
+      - tool_joint
+  

@@ -1,0 +1,386 @@
+<?xml version="1.0"?>
+<robot
+  name="full_robot">
+
+<joint name="bottom_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="bottom_link"/>
+  </joint>
+  <link name="bottom_link">
+    <visual>
+      <origin rpy="0 0 0" xyz=" 0 0 -0.04"/>
+      <geometry>
+        <box size="1 1 0.01"/>
+      </geometry>
+      <material name="Brown"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz=" 0 0 -0.04"/>
+      <geometry>
+        <box size="1 1 0.02"/>
+      </geometry>
+    </collision>
+    &gt;
+
+  
+  </link>
+ <link name="base_link">
+    <inertial>
+      <origin
+        xyz="0.10684 0.086841 0.20399"
+        rpy="0 0 0" />
+      <mass
+        value="1.5238" />
+      <inertia
+        ixx="0.00043153"
+        ixy="-0.00043735"
+        ixz="-1.3095E-08"
+        iyy="0.00083113"
+        iyz="-1.0248E-08"
+        izz="0.0012627" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://full_robot/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="aluminium_alloy_6063">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+ <joint name="arm_joint" type="continuous">
+    <origin
+      xyz="0.14259 -0.20399 0.066928"
+      rpy="1.5708 -5.9837E-20 -0.00097724" />
+    <parent link="base_link" />
+    <child link="arm_link" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+
+  <link
+    name="arm_link">
+    <inertial>
+      <origin
+        xyz="0.041022 0.041912 0.17558"
+        rpy="0 0 0" />
+      <mass
+        value="1.4688" />
+      <inertia
+        ixx="0.0029361"
+        ixy="-0.0013237"
+        ixz="0.00011857"
+        iyy="0.0017914"
+        iyz="0.00016232"
+        izz="0.0029699" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/arm_link.STL" />
+      </geometry>
+      <material
+        name="alumiium_alloy_6063">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/arm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="shoulder_joint"
+    type="continuous">
+    <origin
+      xyz="-0.039469 -0.015442 -0.28116"
+      rpy="-2.2339E-15 -1.8801E-15 0.39972" />
+    <parent
+      link="arm_link" />
+    <child
+      link="shoulder_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <joint
+    name="shoulder_jointy"
+    type="continuous">
+    <origin
+      xyz="-0.039469 -0.015442 -0.28116"
+      rpy="-2.2339E-15 -1.8801E-15 0.39972" />
+    <parent
+      link="arm_link" />
+    <child
+      link="shoulder_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <joint
+    name="shoulder_jointx"
+    type="continuous">
+    <origin
+      xyz="-0.039469 -0.015442 -0.28116"
+      rpy="-2.2339E-15 -1.8801E-15 0.39972" />
+    <parent
+      link="arm_link" />
+    <child
+      link="shoulder_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="shoulder_link">
+    <inertial>
+      <origin
+        xyz="0.15394 0.26622 0.40843"
+        rpy="0 0 0" />
+      <mass
+        value="1.5789" />
+      <inertia
+        ixx="0.015295"
+        ixy="8.362E-05"
+        ixz="-2.1246E-05"
+        iyy="0.00031735"
+        iyz="0.0010532"
+        izz="0.01512" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="-0.1 0 0"
+        rpy="0 0.5 0.4" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="alumiium_alloy_6063">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+ 
+ <joint
+
+    name="wrist_joint"
+    type="continuous">
+    <origin
+      xyz="0.048854 0.51489 0.50239"
+      rpy="4.1874E-06 3.5863E-15 -0.39411" />
+    <parent
+
+      link="shoulder_link" />
+    <child
+      link="wrist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+
+      effort="0"
+      velocity="0" />
+  </joint>
+
+
+  <link
+    name="wrist_link">
+    <inertial>
+      <origin
+        xyz="0.10012 0.041268 -0.0519"
+        rpy="0 0 0" />
+      <mass
+        value="0.30512" />
+      <inertia
+        ixx="7.4054E-05"
+        ixy="8.6647E-06"
+        ixz="-1.3058E-05"
+        iyy="5.528E-05"
+        iyz="1.2961E-05"
+        izz="3.4029E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/wrist_link.STL" />
+      </geometry>
+      <material
+        name="alumiium_alloy_6063">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+ <joint
+    name="wrotate_joint"
+    type="continuous">
+    <origin
+      xyz="0.35232 0.032731 0.014655"
+
+      rpy="0.067828 -0.16889 -0.0056096" />
+    <parent
+      link="wrist_link" />
+    <child
+      link="wrotate_link" />
+    <axis
+      xyz="0.98576 -0.0057957 -0.16808" />
+    <limit
+      effort="0"
+
+      velocity="0" />
+  </joint>
+  <link
+    name="wrotate_link">
+    <inertial>
+      <origin
+        xyz="-0.056297 0.048115 -0.018715"
+        rpy="0 0 0" />
+      <mass
+        value="1.7026" />
+      <inertia
+        ixx="0.00090101"
+        ixy="-0.0037407"
+        ixz="0.001846"
+        iyy="0.024168"
+        iyz="0.00020238"
+        izz="0.024612" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/wrotate_link.STL" />
+      </geometry>
+      <material
+        name="alumiium_alloy_6063">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/wrotate_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+   <joint
+    name="tool_joint"
+    type="continuous">
+    <origin
+      xyz="0.22182 0.061664 -0.042198"
+      rpy="-2.7271 -0.24532 1.4974" />
+    <parent
+      link="wrotate_link" />
+    <child
+      link="tool_link" />
+    <axis
+      xyz="0.31691 -0.22746 -0.92078" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+
+  <link
+    name="tool_link">
+    <inertial>
+      <origin
+        xyz="-0.041979 0.012151 0.047581"
+        rpy="0 0 0" />
+      <mass
+        value="0.3505" />
+      <inertia
+        ixx="1.6538E-05"
+        ixy="1.0037E-05"
+        ixz="3.5653E-05"
+        iyy="0.00010516"
+        iyz="-4.2721E-06"
+        izz="9.1001E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/tool_link.STL" />
+      </geometry>
+      <material
+        name="alumiium_alloy_6063">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://full_robot/meshes/tool_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+ 
+</robot>

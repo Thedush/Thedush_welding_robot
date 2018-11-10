@@ -1,0 +1,17 @@
+thedush_arm_full_robot:
+  thedush_arm_joint_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - arm_joint
+      - shoulder_joint
+      - wrist_joint
+      - wrotate_joint
+      - tool_joint
+
+    gains:
+      arm_joint:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      shoulder_joint: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      wrist_joint:  {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      wrotate_joint:       {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      tool_joint:    {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      

@@ -1,0 +1,16 @@
+<launch>
+
+
+  <!-- Launch Gazebo  -->
+  <include file="$(find thedush_arm_full_robot)/launch/thedush_arm_world.launch" />   
+
+ <include file="$(find thedush_arm_full_robot)/launch/thedush_arm_gazebo_states.launch" />   
+
+  <!-- ros_control trajectory control dof arm launch file -->
+  <include file="$(find thedush_arm_full_robot)/launch/thedush_arm_trajectory_controller.launch" />    
+
+  <!-- moveit launch file -->
+  <include file="$(find welding_robot_config)/launch/moveit_planning_execution.launch" />    
+
+
+</launch>
