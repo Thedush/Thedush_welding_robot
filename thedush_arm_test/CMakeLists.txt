@@ -37,6 +37,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+add_executable(robot_model_and_robot_state_tutorial src/robot_model_and_robot_state_tutorial.cpp)
+target_link_libraries(robot_model_and_robot_state_tutorial ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 ## Declare a cpp executable
 add_executable(test_random_node src/test_random.cpp)
