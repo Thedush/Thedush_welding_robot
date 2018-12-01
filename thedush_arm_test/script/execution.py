@@ -23,13 +23,10 @@ def check_workspace(x,y,z):
 
 def main():
 	userpts=[]
-	print('Enter x:')
-	x1 = input()
-	print('Enter y:')
-	y1 = input()
-	print('Enter z:')
-	z1 = input()
-	print'The coordinates given is ' +  str(x1),str(y1),str(z1) 
+	x1 = float(raw_input("Enter x:  "))
+	y1 = float(raw_input("Enter y:  "))
+	z1 = float(raw_input("Enter z:  "))
+	print'The coordinates given is [{}, {}, {}]'.format(x1,y1,z1)
 
 	valid=check_workspace(x1,y1,z1)
 	if valid == True:
@@ -58,13 +55,13 @@ def main():
 	Cartesian.append(z)
 	row.append(userpts)
 	row.append(Cartesian)
-	csvData = [['UserPoints', 'Cartesian Points']]
+	
 	csvData.append(row)
-	with open('Result.csv', 'w') as csvFile:
-	    writer = csv.writer(csvFile)
-	    writer.writerows(csvData)
+	
+	  
+	    
 
-	csvFile.close()
+	
 	# # print z
 	# V = zeros((3,3,3))
 	# for i in range(3):
@@ -76,10 +73,15 @@ def main():
 	# fn = RegularGridInterpolator((x,y,z), V)
 	# pts = array([[2,6,8],[3,5,7]])
 	# print(fn(pts))
+csvData = [['UserPoints', 'Cartesian Points']]
 if __name__ == '__main__':
 	while True:
-		intrupt= raw_input("If you want intrupt the execution (Y/N) :  ")
+		intrupt= raw_input("Do you want continue the execution (Y/N) :  ")
 		if(intrupt == 'y' or intrupt == 'Y'):
-			break
-		else:
 			main()
+		else:
+			with open('Result.csv', 'w') as csvFile:
+				  writer = csv.writer(csvFile)
+				  writer.writerows(csvData)
+			csvFile.close()
+			break
