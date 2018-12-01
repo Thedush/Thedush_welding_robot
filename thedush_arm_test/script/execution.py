@@ -13,7 +13,7 @@ from actionlib_msgs.msg import GoalStatusArray
 from geometry_msgs.msg import PoseStamped
 import subprocess
 from std_msgs.msg import String
-
+import csv
 def check_workspace(x,y,z):
 	if (x > -1 and x <= 1) and (y >= -0.35 and y <= 0.35) and (z >= 0 and z <= 1.5):
 		return True
@@ -21,7 +21,8 @@ def check_workspace(x,y,z):
 		return False
 
 
-if __name__ == '__main__':
+def main():
+	userpts=[]
 	print('Enter x:')
 	x1 = input()
 	print('Enter y:')
@@ -33,10 +34,13 @@ if __name__ == '__main__':
 	valid=check_workspace(x1,y1,z1)
 	if valid == True:
 		print('The point lies inside the Workspace  :) ') 
+		userpts.append(x1)
+		userpts.append(y1)
+		userpts.append(z1)
 
 	else :
 	 	print('The Point was outside the workspace :( ')
-
+	 	return
 # current pose 
 
 # 
@@ -44,8 +48,23 @@ if __name__ == '__main__':
 	y = linspace(0,y1,3)
 	z = linspace(0,z1,3)
 	print x,y,z
-	# for i in range(len(x)):
+	Cartesian=[]
+	row=[]
 
+	for i in range(len(x)):
+		print 'asd'
+	Cartesian.append(x)
+	Cartesian.append(y)
+	Cartesian.append(z)
+	row.append(userpts)
+	row.append(Cartesian)
+	csvData = [['UserPoints', 'Cartesian Points']]
+	csvData.append(row)
+	with open('Result.csv', 'w') as csvFile:
+	    writer = csv.writer(csvFile)
+	    writer.writerows(csvData)
+
+	csvFile.close()
 	# # print z
 	# V = zeros((3,3,3))
 	# for i in range(3):
@@ -57,3 +76,10 @@ if __name__ == '__main__':
 	# fn = RegularGridInterpolator((x,y,z), V)
 	# pts = array([[2,6,8],[3,5,7]])
 	# print(fn(pts))
+if __name__ == '__main__':
+	while True:
+		intrupt= raw_input("If you want intrupt the execution (Y/N) :  ")
+		if(intrupt == 'y' or intrupt == 'Y'):
+			break
+		else:
+			main()
